@@ -1,18 +1,20 @@
 import React, {useEffect,useState} from 'react';
-import { FormattedMessage, useIntl } from 'react-intl';
-import './PokemonList.scss';
-import Pokemon  from "../../components/pokemon";
+import {
+  Chart,
+  BarSeries,
+  Title,
+  ArgumentAxis,
+  ValueAxis
+} from '@devexpress/dx-react-chart-bootstrap4';
+import '@devexpress/dx-react-chart-bootstrap4/dist/dx-react-chart-bootstrap4.css';
+import { Animation } from '@devexpress/dx-react-chart';
 
+export const Report = () => {
 
-  
-
-export const PokemonList = () => {
-
-  const [pokeEnglish, setPokeEnglish] = useState([]);
+    const [pokeEnglish, setPokeEnglish] = useState([]);
 
   const [pokeEspa, setPokeEspa] = useState([]);
 
-  var lng = useIntl().locale;
   
   useEffect(()=>{
     if(!navigator.onLine){
@@ -45,34 +47,26 @@ export const PokemonList = () => {
   
 }, []);
 
+    return (
+        <div className="card">
+          <Chart
+            data={pokeEnglish}
+            rotated={false} 
+          >
+    
+            <ArgumentAxis />
+            <ValueAxis max={1} />
+  
+            <BarSeries
+              valueField="height"
+              argumentField="name"
+              color='blue'
+              
+            />
+            <Title text="Pokemons" />
+            <Animation />
+          </Chart>
+        </div>
+      );
 
-  return (
-    <>
-      <div className='pokemon-container'>
-        <h1>Most wanted pokemons</h1>
-        <table className='table'>
-          <thead>
-            <tr>
-              <th scope='col'>#</th>
-              <th scope='col'><FormattedMessage id="Image"/></th>
-              <th scope='col'><FormattedMessage id="Name"/></th>
-              <th scope='col'><FormattedMessage id="Description"/></th>
-              <th scope='col'><FormattedMessage id="Height"/></th>
-              <th scope='col'><FormattedMessage id="Weight"/></th>
-              <th scope='col'><FormattedMessage id="Type"/></th>
-            </tr>
-          </thead>
-          <tbody>
-          {lng==="es"?pokeEspa.map((e, i) => (
-            <Pokemon key={i} offer={e} />
-          )):
-          pokeEnglish.map((e, i) => (
-            <Pokemon key={i} offer={e} />
-          ))
-          }
-        </tbody>
-        </table>
-      </div>
-    </>
-  );
 };

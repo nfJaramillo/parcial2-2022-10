@@ -1,0 +1,11 @@
+{
+	"Image": "Imagen",
+	"Name": "Nombre",
+	"Description": "Descripcion",
+	"Height": "Altura",
+	"Weight": "Peso",
+	"Type": "Tipo",
+	"Test": "Prueba",
+	"Pokemons": "Pokemones",
+	"Report": "Reporte"
+}

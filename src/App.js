@@ -5,17 +5,18 @@ import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import messages from './i18n/messages';
 import { NavBar } from './shared/components/NavBar';
 import { PokemonList } from './pages/pokemon-list/PokemonList';
+import { Report } from './pages/pokemon-list/report';
 import './App.scss';
 
 function App() {
-  const [language, setLanguage] = useState(LOCALES.SPANISH);
   return (
     <>
-      <IntlProvider locale={language} messages={messages[language]}>
+
         <Router>
           <NavBar></NavBar>
           <Routes>
             <Route exact path='/' element={<PokemonList></PokemonList>} />
+            <Route exact path='/report' element={<Report></Report>} />
             <Route
               path='*'
               element={
@@ -26,7 +27,7 @@ function App() {
             />
           </Routes>
         </Router>
-      </IntlProvider>
+
     </>
   );
 }

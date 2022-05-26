@@ -27,6 +27,9 @@ export const NavBar = () => {
               <Link className='nav-link' to='/'>
                 <FormattedMessage id='pokemons' />
               </Link>
+              <Link className='nav-link' to='/report'>
+                <FormattedMessage id='report' />
+              </Link>
             </li>
           </ul>
         </div>
